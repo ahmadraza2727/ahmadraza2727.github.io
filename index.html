@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahmad Raza | Software & Embedded Engineer</title>
+  
+  <!-- MathJax for rendering equations (Safe CDN) -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --bg-color: #f8fafc;
+      --surface-color: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: var(--surface-color);
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    h2::after {
+      content: "";
+      height: 2px;
+      background-color: var(--primary-color);
+      flex-grow: 1;
+      opacity: 0.2;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--surface-color);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: var(--text-main);
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    /* Skills */
+    .skill-category {
+      margin-bottom: 25px;
+    }
+    
+    .skill-category h3 {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills-list span {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid #bae6fd;
+    }
+
+    /* Projects specific */
+    .project {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: var(--surface-color);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+    
+    .project:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    @media (min-width: 768px) {
+      .project.has-image {
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .project.has-image img {
+        width: 35%;
+        object-fit: cover;
+      }
+      .project-content {
+        width: 65%;
+      }
+    }
+
+    .project img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background-color: #f1f5f9;
+    }
+
+    .project-content {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tech-stack {
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary-color);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-main);
+      color: #fff;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+
+    /* Carousel Placeholder Styles */
+    .carousel {
+      width: 100%;
+      overflow-x: auto;
+      display: flex;
+      gap: 10px;
+      padding-bottom: 10px;
+    }
+    .carousel img {
+      flex: 0 0 80%;
+      max-height: 300px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Ahmad Raza</h1>
+      <p>Mobile App, Full Stack & Embedded Systems Developer</p>
+      <div class="contact-links">
+        <span>📞 0303-6230666</span>
+        <span>📧 <a href="mailto:itsahmadraza27@gmail.com">itsahmadraza27@gmail.com</a></span>
+        <!-- <span>🌐 <a href="https://ahmadraza27.github.io/" target="_blank">Portfolio</a></span> -->
+        <span>💻 <a href="https://github.com/ahmadraza27" target="_blank">GitHub</a></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="education container">
+      <h2>Education & Honors</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Bahauddin Zakariya University</h3>
+          <p class="card-meta">Bachelor of Engineering, Computer Engineering | Multan, Pakistan</p>
+          <p class="card-meta">Expected Graduation: June 2026</p>
+          <ul>
+            <li><strong>CGPA:</strong> 3.88/4.00 (Dean's List Candidate)</li>
+            <li><strong>Relevant Coursework:</strong> Embedded Systems, Data Structures & Algorithms, Database Systems, Computer Architecture, Operating Systems, Digital Logic Design</li>
+            <li><strong>Academic Project:</strong> Neural Network from Scratch - Implemented classification model using only NumPy to understand backpropagation and gradient descent fundamentals</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Awards & Honors</h3>
+          <p class="card-meta">National Skill Competency Test</p>
+          <ul>
+            <li>Achieved 99.3 Percentile</li>
+            <li>Ranked within top 1% of test takers nation wide</li>
+            <li>More information at <a href="https://nsct.hec.gov.pk" target="_blank">nsct.hec.gov.pk</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience container">
+      <h2>Professional Experience</h2>
+      <div class="card">
+        <h3>InBound Softwares</h3>
+        <p class="card-meta">Mobile App Developer (Part-time) | Multan, Pakistan | 2024-2025</p>
+        <ul>
+          <li>Developed and maintained cross-platform React Native applications for Android and iOS, ensuring consistent performance across devices</li>
+          <li>Engineered an inventory tracking mobile app with real-time dashboard updates, deployed for local tile and interior decoration businesses to streamline stock management</li>
+          <li>Created "WhatsDirect," a messaging utility serving hundreds of users that enabled WhatsApp conversations without saving contacts later inspired similar native feature adoption</li>
+          <li>Collaborated with design teams to implement modern UI/UX principles, reducing user onboarding time by 30%</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="skills container">
+      <h2>Technical Skills</h2>
+      <div class="grid-2">
+        <div class="skill-category">
+          <h3>Embedded Systems & Hardware</h3>
+          <div class="skills-list">
+            <span>STM32F4</span> <span>ESP32/ESP32-S3/ESP32-CAM</span> <span>Arduino</span> <span>ESP-IDF</span> <span>STM32 HAL</span> <span>Bare-metal</span> <span>GPIO</span> <span>ADC</span> <span>DMA</span> <span>Timers</span> <span>PWM</span> <span>UART</span> <span>SPI</span> <span>I2C</span> <span>CAN</span> <span>USB (HID, CDC, DFU, Mass Storage)</span> <span>Logic Analyzer</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3>Mobile & Web Development</h3>
+          <div class="skills-list">
+            <span>React Native</span> <span>Flutter</span> <span>Native Android/iOS APIs</span> <span>Django</span> <span>FastAPI</span> <span>React.js</span> <span>REST APIs</span> <span>JWT Authentication</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Programming Languages & Databases</h3>
+          <div class="skills-list">
+            <span>Python</span> <span>C++</span> <span>PostgreSQL</span> <span>SQLite</span> <span>Firebase</span> <span>SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>Embedded Concepts & Tools</h3>
+          <div class="skills-list">
+            <span>Bootloaders</span> <span>Memory Mapping</span> <span>Interrupts</span> <span>CRC Algorithms</span> <span>State Machines</span> <span>Real-Time Processing</span> <span>Git</span> <span>VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects container">
+      <h2>Embedded Systems Projects</h2>
+      
+      <div class="grid-2">
+        <div class="card">
+          <h3>Custom DFU Bootloader - STM32F4</h3>
+          <ul>
+            <li>Designed and implemented a custom USB DFU bootloader enabling firmware updates over USB without external programmers</li>
+            <li>Configured memory mapping and linker scripts for bootloader-application separation with vector table relocation</li>
+            <li>Implemented flash memory erase/write routines with CRC verification and interrupt-safe programming</li>
+            <li>Developed DFU request handling protocol supporting firmware validation before execution</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>USB Joystick Emulator - STM32F4</h3>
+          <ul>
+            <li>Built a USB HID joystick using STM32F4 USB OTG FS, configuring custom descriptors and endpoints for native OS enumeration</li>
+            <li>Developed HID report descriptors and interrupt-driven firmware architecture achieving &lt;5ms latency</li>
+            <li>Implemented real-time input handling through optimized interrupt service routines</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Portable Scanner & Thermal Printing System - ESP32</h3>
+          <ul>
+            <li>Developed dual-processor embedded system using ESP32-CAM for image capture and ESP32-S3 for thermal printer control</li>
+            <li>Implemented UART communication protocol for reliable data transmission between processors</li>
+            <li>Designed state-machine firmware for coordinated capture-to-print workflow with error handling</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>CRC8 Bitwise Checker - Arduino</h3>
+          <ul>
+            <li>Created CRC8 calculation system with keypad input and LED-based result display using bitwise algorithm implementation</li>
+            <li>Implemented manual bitwise computation without external libraries</li>
+            <li>Designed GPIO-based LED indicators and timer-driven input debouncing for reliable operation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects container">
+      <h2>Software & Game Development Projects</h2>
+
+      <!-- Railway App with original Carousel -->
+      <div class="project">
+        <div class="carousel">
+          <img src="images/railway/home1.png" alt="Railway Home Page">
+          <img src="images/railway/home2.png" alt="Railway Home Page 2">
+          <img src="images/railway/about.png" alt="About Us Page">
+          <img src="images/railway/contact.png" alt="Contact Page">
+          <img src="images/railway/route.png" alt="Route Information">
+          <img src="images/railway/trains.png" alt="Train Management">
+          <img src="images/railway/detail.png" alt="Train Details">
+          <img src="images/railway/schedule.png" alt="Train Scheduling">
+          <img src="images/railway/signup.png" alt="Sign Up">
+          <img src="images/railway/signin.png" alt="Sign In">
+          <img src="images/railway/billing.png" alt="Billing">
+          <img src="images/railway/booking.png" alt="Booking">
+        </div>
+        <div class="project-content">
+          <h3>Railway Management System</h3>
+          <ul>
+            <li>Designed intelligent railway reservation website using A* algorithm for optimal route planning</li>
+            <li>Implemented innovative partial-trip seat booking (Point B - C segments sellable from A - B)</li>
+            <li>Built comprehensive UI for route, train, and ticket management with JWT authentication and email verification</li>
+          </ul>
+          <p class="tech-stack">Technologies: Django, React.js, A* Algorithm, JWT, Email Verification</p>
+        </div>
+      </div>
+
+      <div class="project has-image">
+        <!-- <img src="images/tiktok.jpg" alt="TikTok Installer Project"> -->
+        <div class="project-content">
+          <h3>TikTok Videos Installer</h3>
+          <ul>
+            <li>Developed cross-platform mobile app enabling watermark-free video downloads via link pasting</li>
+            <li>Integrated local native storage and REST APIs for rapid content processing</li>
+          </ul>
+          <p class="tech-stack">Technologies: React Native, Native Storage, RapidAPI</p>
+        </div>
+      </div>
+
+      <div class="project has-image">
+        <!-- <img src="images/inventory.jpg" alt="Inventory App Project"> -->
+        <div class="project-content">
+          <h3>Inventory Management App</h3>
+          <ul>
+            <li>Built full-stack inventory solution with modern dashboard and real-time updates for small businesses</li>
+            <li>Implemented JWT authentication, TanStack Query for cache management, and Tailwind NativeWind for UI</li>
+            <li>Deployed in local tile and interior decoration businesses</li>
+          </ul>
+          <p class="tech-stack">Technologies: Django, React Native, JWT, TanStack Query, NativeWind</p>
+        </div>
+      </div>
+
+      <div class="project has-image">
+        <!-- <img src="images/message.jpg" alt="Message Manager"> -->
+        <div class="project-content">
+          <h3>WhatsDirect (Message Manager)</h3>
+          <ul>
+            <li>Engineered utility app allowing WhatsApp communication without saving contacts using native Android/iOS APIs</li>
+            <li>Achieved hundreds of active users with streamlined contact-free messaging workflow</li>
+          </ul>
+          <p class="tech-stack">Technologies: React Native, Native APIs</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Finance Management App</h3>
+          <ul>
+            <li>Created personal finance tracker with local SQLite storage and Firebase cloud synchronization</li>
+            <li>Implemented audio memo capabilities and smooth animations using Flutter Animate</li>
+          </ul>
+          <p class="tech-stack">Technologies: Flutter, SQLite, Firebase, Flutter Animate</p>
+        </div>
+        
+        <div class="card">
+          <h3>Console Hide & Seek Game</h3>
+          <ul>
+            <li>Developed top-down console-based game utilizing vector fields for AI movement and pathfinding</li>
+            <li>Implemented data-oriented design principles for memory efficiency and performance optimization</li>
+            <li>Applied digital differential analyzer (DDA) algorithms and flow maps for smooth enemy navigation</li>
+          </ul>
+          <p class="tech-stack">Technologies: C++, Data-Oriented Design, Vector Fields, DDA</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="leadership container">
+      <h2>Leadership, Activities & Languages</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>TECH SOCIETY - Active Member</h3>
+          <p class="card-meta">Department of Computer Engineering | 2024-Present</p>
+          <ul>
+            <li>Participate in departmental technical events and workshops</li>
+            <li>Collaborate with fellow engineering students on interdisciplinary projects</li>
+            <li>Contribute to peer learning initiatives in embedded systems and software development</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <ul>
+            <li><strong>English:</strong> Fluent</li>
+            <li><strong>Urdu:</strong> Native</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Ahmad Raza. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
